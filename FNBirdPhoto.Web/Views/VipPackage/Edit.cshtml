@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "编辑套餐";
+    Layout = null;
+}
+@model Framework.Entity.CCY_VipPackage
+<form id="dataForm">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <table class="gridtable">
+        <tr>
+            <td>套餐名称</td>
+            <td>
+                <input class="easyui-textbox" name="sVipName" data-options="required:true,width:300" value="@Model.sVipName">
+            </td>
+        </tr>
+        <tr>
+            <td>套餐价格</td>
+            <td>
+                <input class="easyui-numberbox" name="dVipPrices" data-options="required:true,min:0,precision:2,width:300" value="@Model.dVipPrices">
+            </td>
+        </tr>
+        <tr>
+            <td>套餐原价</td>
+            <td>
+                <input class="easyui-numberbox" name="dOldPrices" data-options="required:true,min:0,precision:2,width:300" value="@Model.dOldPrices">
+            </td>
+        </tr>
+        <tr>
+            <td>优惠金额</td>
+            <td>
+                <input class="easyui-numberbox" name="dSavePrices" data-options="required:true,min:0,precision:2,width:300" value="@Model.dSavePrices">
+            </td>
+        </tr>
+
+        <tr>
+            <td>返佣金额</td>
+            <td>
+                <input class="easyui-numberbox" data-options="required:true,min:0,width:300" name="dBonusMoney" value="@Model.dBonusMoney">
+            </td>
+        </tr>
+        <tr>
+            <td>套餐周期</td>
+            <td>
+                <input class="easyui-numberspinner" name="sVipDays" data-options="required:true,min:0,width:300" value="@Model.sVipDays">
+            </td>
+        </tr>
+        <tr>
+            <td>排序</td>
+            <td>
+                <input class="easyui-numberspinner" name="iSort" data-options="required:true,min:0,width:300" value="@Model.iSort">
+            </td>
+        </tr>
+    </table>
+</form>

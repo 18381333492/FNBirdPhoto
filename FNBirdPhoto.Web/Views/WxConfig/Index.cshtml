@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "公众号配置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Framework.Entity.CCY_WxConfig
+<div>
+    <form id="dataForm">
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <table class="gridtable">
+            <tr>
+                <td>微信公众号名称</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" data-options="required:true" name="sName" value="@Model.sName" />
+                </td>
+            </tr>
+            <tr>
+                <td>AppId</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" data-options="required:true" name="sAppId" value="@Model.sAppId" />
+                </td>
+            </tr>
+            <tr>
+                <td>AppSecret</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" data-options="required:true" name="sAppSecret" value="@Model.sAppSecret" />
+                </td>
+            </tr>
+            <tr>
+                <td>微信商户号</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" name="sMchId" data-options="required:true" value="@Model.sMchId" />
+                </td>
+            </tr>
+            <tr>
+                <td>支付秘钥Key</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" name="sPayKey" data-options="required:true" value="@Model.sPayKey" />
+                </td>
+            </tr>
+            <tr>
+                <td>异步回调地址</td>
+                <td>
+                    <input class="easyui-textbox" style="width:400px" name="sNotifyUrl" data-options="required:true" value="@Model.sNotifyUrl" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a id="ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">保 存</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#ok').on("click", function () {
+            if ($(eui.form).form("validate")) {
+                eui.button.disable();//禁用按钮
+                eui.commitArgs.url ="@Url.Action("Index")";
+                eui.commitArgs.data = $(eui.form).serialize();
+                eui.commitArgs.success = function (r) {
+                    eui.button.enable();
+                    eui.success("操作成功");
+                }
+                eui.commit(eui.commitArgs);
+            }
+        });
+    });
+</script>
+

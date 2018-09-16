@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<!--短信验证码的相关配置-->
+
+<CodeConfig>
+  <AppId>EUCP-EMY-SMS1-2PVTT</AppId>
+  <SecretKey>C6F070D6AA420C27</SecretKey>
+  <sUrl>http://bjmtn.b2m.cn/simpleinter/sendSMS</sUrl>
+  <Templets>
+    <Templet name="Bing">
+      【蜂鸟微商相册】您的验证码是{0},此验证码用于绑定手机号码,十分钟内有效。
+    </Templet>
+    <Templet name="FindPwd">
+      【蜂鸟微商相册】您的找回密码验证码是{0},十分钟内有效。
+    </Templet>
+  </Templets>
+</CodeConfig>

@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CCY_FNBirdPhotoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CCY_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sNickName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sPhone" Type="varchar" MaxLength="50" />
+          <Property Name="sPassword" Type="varchar" MaxLength="100" />
+          <Property Name="sParentUnionid" Type="varchar" MaxLength="100" />
+          <Property Name="sUnionid" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="sOpenId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sHeadImg" Type="varchar" MaxLength="255" />
+          <Property Name="sWeiXinNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="dBonus" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="bIsVip" Type="bit" Nullable="false" />
+          <Property Name="sVipName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dExpireTime" Type="datetime" Nullable="false" />
+          <Property Name="sPhotoName" Type="varchar" MaxLength="50" />
+          <Property Name="sIntroduce" Type="varchar" MaxLength="500" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="iStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_Concern">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sClientId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sRemarkName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sConcernId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bIsNotSee" Type="bit" Nullable="false" />
+          <Property Name="dConcernTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_ImageText">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sClientId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sSourceId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iType" Type="int" Nullable="false" />
+          <Property Name="sContext" Type="varchar(max)" Nullable="false" />
+          <Property Name="sImagesUrl" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="sVideoUrl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="bIsTop" Type="bit" Nullable="false" />
+          <Property Name="sGoodsNo" Type="varchar" MaxLength="100" />
+          <Property Name="dCommodityPrices" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="dRetailprices" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="dTradePrices" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="dPackPrices" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="sRemark" Type="varchar" MaxLength="1000" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="dUpdateTime" Type="datetime" />
+          <Property Name="dShareTime" Type="datetime" />
+          <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sClientId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sOrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sVipPackageId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sVipName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="sPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="dPayTime" Type="datetime" />
+          <Property Name="iState" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sNickName" Type="varchar" MaxLength="50" />
+          <Property Name="sPhone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sOpenId" Type="varchar" MaxLength="100" />
+          <Property Name="sHeadImg" Type="varchar" MaxLength="255" />
+          <Property Name="sAddress" Type="varchar" MaxLength="255" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="dUpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="iStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_VipPackage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sVipName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dVipPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dOldPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dSavePrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dBonusMoney" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="sVipDays" Type="int" Nullable="false" />
+          <Property Name="iSort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_WxConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sAppId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sAppSecret" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sMchId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sPayKey" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sNotifyUrl" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CCY_FNBirdPhotoModelStoreContainer">
+          <EntitySet Name="CCY_Client" EntityType="Self.CCY_Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_Concern" EntityType="Self.CCY_Concern" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_ImageText" EntityType="Self.CCY_ImageText" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_Order" EntityType="Self.CCY_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_User" EntityType="Self.CCY_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_VipPackage" EntityType="Self.CCY_VipPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCY_WxConfig" EntityType="Self.CCY_WxConfig" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CCY_FNBirdPhotoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CCY_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sNickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sParentUnionid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sUnionid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sOpenId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sHeadImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sWeiXinNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dBonus" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="bIsVip" Type="Boolean" Nullable="false" />
+          <Property Name="sVipName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dExpireTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sIntroduce" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="iStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_Concern">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sRemarkName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sConcernId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bIsNotSee" Type="Boolean" Nullable="false" />
+          <Property Name="dConcernTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CCY_ImageText">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sSourceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iType" Type="Int32" Nullable="false" />
+          <Property Name="sContext" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sImagesUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sVideoUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bIsTop" Type="Boolean" Nullable="false" />
+          <Property Name="sGoodsNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dCommodityPrices" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="dRetailprices" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="dTradePrices" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="dPackPrices" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="sRemark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dUpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="dShareTime" Type="DateTime" Precision="3" />
+          <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sOrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sVipPackageId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sVipName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sPrices" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dPayTime" Type="DateTime" Precision="3" />
+          <Property Name="iState" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sNickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sOpenId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sHeadImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dUpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="iStatus" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_VipPackage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sVipName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dVipPrices" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dOldPrices" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dSavePrices" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dBonusMoney" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="sVipDays" Type="Int32" Nullable="false" />
+          <Property Name="iSort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CCY_WxConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sAppId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sAppSecret" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sMchId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sPayKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sNotifyUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CCY_Client" EntityType="Self.CCY_Client" />
+          <EntitySet Name="CCY_Concern" EntityType="Self.CCY_Concern" />
+          <EntitySet Name="CCY_ImageText" EntityType="Self.CCY_ImageText" />
+          <EntitySet Name="CCY_Order" EntityType="Self.CCY_Order" />
+          <EntitySet Name="CCY_User" EntityType="Self.CCY_User" />
+          <EntitySet Name="CCY_VipPackage" EntityType="Self.CCY_VipPackage" />
+          <EntitySet Name="CCY_WxConfig" EntityType="Self.CCY_WxConfig" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CCY_FNBirdPhotoModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CCY_Client">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_Client">
+              <MappingFragment StoreEntitySet="CCY_Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sNickName" ColumnName="sNickName" />
+                <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+                <ScalarProperty Name="sPassword" ColumnName="sPassword" />
+                <ScalarProperty Name="sParentUnionid" ColumnName="sParentUnionid" />
+                <ScalarProperty Name="sUnionid" ColumnName="sUnionid" />
+                <ScalarProperty Name="sOpenId" ColumnName="sOpenId" />
+                <ScalarProperty Name="sHeadImg" ColumnName="sHeadImg" />
+                <ScalarProperty Name="sWeiXinNo" ColumnName="sWeiXinNo" />
+                <ScalarProperty Name="dBonus" ColumnName="dBonus" />
+                <ScalarProperty Name="bIsVip" ColumnName="bIsVip" />
+                <ScalarProperty Name="sVipName" ColumnName="sVipName" />
+                <ScalarProperty Name="dExpireTime" ColumnName="dExpireTime" />
+                <ScalarProperty Name="sPhotoName" ColumnName="sPhotoName" />
+                <ScalarProperty Name="sIntroduce" ColumnName="sIntroduce" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="iStatus" ColumnName="iStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_Concern">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_Concern">
+              <MappingFragment StoreEntitySet="CCY_Concern">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sClientId" ColumnName="sClientId" />
+                <ScalarProperty Name="sRemarkName" ColumnName="sRemarkName" />
+                <ScalarProperty Name="sConcernId" ColumnName="sConcernId" />
+                <ScalarProperty Name="bIsNotSee" ColumnName="bIsNotSee" />
+                <ScalarProperty Name="dConcernTime" ColumnName="dConcernTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_ImageText">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_ImageText">
+              <MappingFragment StoreEntitySet="CCY_ImageText">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sClientId" ColumnName="sClientId" />
+                <ScalarProperty Name="sSourceId" ColumnName="sSourceId" />
+                <ScalarProperty Name="iType" ColumnName="iType" />
+                <ScalarProperty Name="sContext" ColumnName="sContext" />
+                <ScalarProperty Name="sImagesUrl" ColumnName="sImagesUrl" />
+                <ScalarProperty Name="sVideoUrl" ColumnName="sVideoUrl" />
+                <ScalarProperty Name="bIsTop" ColumnName="bIsTop" />
+                <ScalarProperty Name="sGoodsNo" ColumnName="sGoodsNo" />
+                <ScalarProperty Name="dCommodityPrices" ColumnName="dCommodityPrices" />
+                <ScalarProperty Name="dRetailprices" ColumnName="dRetailprices" />
+                <ScalarProperty Name="dTradePrices" ColumnName="dTradePrices" />
+                <ScalarProperty Name="dPackPrices" ColumnName="dPackPrices" />
+                <ScalarProperty Name="sRemark" ColumnName="sRemark" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="dUpdateTime" ColumnName="dUpdateTime" />
+                <ScalarProperty Name="dShareTime" ColumnName="dShareTime" />
+                <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_Order">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_Order">
+              <MappingFragment StoreEntitySet="CCY_Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sClientId" ColumnName="sClientId" />
+                <ScalarProperty Name="sOrderNo" ColumnName="sOrderNo" />
+                <ScalarProperty Name="sVipPackageId" ColumnName="sVipPackageId" />
+                <ScalarProperty Name="sVipName" ColumnName="sVipName" />
+                <ScalarProperty Name="sPrices" ColumnName="sPrices" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
+                <ScalarProperty Name="iState" ColumnName="iState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_User">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_User">
+              <MappingFragment StoreEntitySet="CCY_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+                <ScalarProperty Name="sNickName" ColumnName="sNickName" />
+                <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+                <ScalarProperty Name="sOpenId" ColumnName="sOpenId" />
+                <ScalarProperty Name="sHeadImg" ColumnName="sHeadImg" />
+                <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="dUpdateTime" ColumnName="dUpdateTime" />
+                <ScalarProperty Name="iStatus" ColumnName="iStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_VipPackage">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_VipPackage">
+              <MappingFragment StoreEntitySet="CCY_VipPackage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sVipName" ColumnName="sVipName" />
+                <ScalarProperty Name="dVipPrices" ColumnName="dVipPrices" />
+                <ScalarProperty Name="dOldPrices" ColumnName="dOldPrices" />
+                <ScalarProperty Name="dSavePrices" ColumnName="dSavePrices" />
+                <ScalarProperty Name="dBonusMoney" ColumnName="dBonusMoney" />
+                <ScalarProperty Name="sVipDays" ColumnName="sVipDays" />
+                <ScalarProperty Name="iSort" ColumnName="iSort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCY_WxConfig">
+            <EntityTypeMapping TypeName="CCY_FNBirdPhotoModel.CCY_WxConfig">
+              <MappingFragment StoreEntitySet="CCY_WxConfig">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sName" ColumnName="sName" />
+                <ScalarProperty Name="sAppId" ColumnName="sAppId" />
+                <ScalarProperty Name="sAppSecret" ColumnName="sAppSecret" />
+                <ScalarProperty Name="sMchId" ColumnName="sMchId" />
+                <ScalarProperty Name="sPayKey" ColumnName="sPayKey" />
+                <ScalarProperty Name="sNotifyUrl" ColumnName="sNotifyUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
