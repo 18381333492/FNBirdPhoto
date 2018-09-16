@@ -55,9 +55,8 @@ namespace Framework.Services
             StringBuilder sSql = new StringBuilder();
             DbParameters Parameters = new DbParameters();
             Parameters.Add("sClientId", clientId);
-            sSql.Append(@"select a.sConcernId,
+            sSql.Append(@"select a.sClientId,
                                  a.bIsNotSee iIsSee, 
-                                 a.sRemarkName,
                                  a.dConcernTime,
                                  b.sNickName,
                                  b.bIsVip,
